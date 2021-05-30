@@ -5,4 +5,16 @@ document.addEventListener("DOMContentLoaded", function () {
     e.preventDefault();
     addBook();
   });
+
+  if (isStorageExist()) {
+    loadDataFromStorage();
+  }
+});
+
+document.addEventListener("ondatasaved", () => {
+  console.log("Data berhasil disimpan");
+});
+
+document.addEventListener("ondataloaded", () => {
+  refreshDataFromBooks();
 });

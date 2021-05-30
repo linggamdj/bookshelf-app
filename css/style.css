@@ -84,6 +84,7 @@ footer {
 .input-section > form > button {
     background-color: #222831;
     color: #eeeeee;
+    font-weight: bold;
     border: 0;
     border-radius: 5px;
     display: block;
@@ -102,8 +103,6 @@ footer {
     padding: 8px;
     border-radius: 5px;
 }
-
-
 
 .input-section > form > .input > label {
     color: #222831;
@@ -145,6 +144,7 @@ footer {
 }
 
 .search-section > form > label {
+    font-weight: bold;
     display: flex;
     align-items: center;
 }
@@ -157,6 +157,7 @@ footer {
 .search-section > form > button {
     background-color: #222831;
     color: white;
+    font-weight: bold;
     border: 0;
     border-radius: 5px;
     cursor: pointer;

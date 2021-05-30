@@ -143,9 +143,9 @@ function searchBook(e) {
   const bookItems = document.querySelectorAll(".book-item");
 
   for (let i = 0; i < bookItems.length; i++) {
-    const book = bookItems[i].querySelector("#author");
-    authorName = book.innerText;
-    if (authorName.toUpperCase().indexOf(filter) > -1) {
+    const book = bookItems[i].querySelector("h3");
+    const bookName = book.innerText;
+    if (bookName.toUpperCase().indexOf(filter) > -1) {
       bookItems[i].style.display = "";
     } else {
       bookItems[i].style.display = "none";

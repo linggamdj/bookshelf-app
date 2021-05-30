@@ -59,7 +59,6 @@ function makeBook(title, author, year, isCompleted) {
   return textContainer;
 };
 
-// function to make button tag
 function createButton(buttonTypeClass, buttonText, eventListener) {
   const button = document.createElement("button");
   button.classList.add(buttonTypeClass);

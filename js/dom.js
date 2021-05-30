@@ -131,6 +131,7 @@ function removeBookFromCompleted(taskElement) {
   const bookPosition = findBookIndex(taskElement[BOOK_ITEMID]);
   books.splice(bookPosition, 1);
 
+  alert("Buku Telah Dihapus");
   taskElement.remove();
 
   updateDataToStorage();

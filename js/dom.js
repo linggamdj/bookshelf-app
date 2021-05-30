@@ -141,6 +141,27 @@ function removeBookFromCompleted(taskElement) {
   books.splice(bookPosition, 1);
 
   taskElement.remove();
+
   updateDataToStorage();
 };
 
+function searchBook(e) {
+  const userInput = document.querySelector("#searchBookTitle");
+  const filter = userInput.value.toUpperCase();
+//   const completedBooks = document.querySelector("#completeBookshelfList");
+//   const unCompletedBooks = document.querySelector("#incompleteBookshelfList");
+  const bookItems = document.querySelectorAll(".book_item");
+//   const bookAuthor = document.querySelector(".book_item > #author")
+
+  for (let i = 0; i < bookItems.length; i++) {
+    const book = bookItems[i].querySelector("#author");
+    authorName = book.innerText;
+    if (authorName.toUpperCase().indexOf(filter) > -1) {
+      bookItems[i].style.display = "";
+    } else {
+      bookItems[i].style.display = "none";
+    }
+  }
+
+  e.preventDefault();
+};

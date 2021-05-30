@@ -54,6 +54,16 @@ main {
 
 }
 
+footer {
+    position: relative;
+    bottom: -34px;
+    padding: 15px;
+    color: #00adb5;
+    background-color: #222831;
+    text-align: center;
+    font-weight: bold;
+}
+
 .input-section {
     display: flex;
     flex-direction: column;

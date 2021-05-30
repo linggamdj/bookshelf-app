@@ -10,7 +10,6 @@ function addBook() {
   const penulisBuku = document.getElementById("inputBookAuthor").value;
   const tahunBuku = parseInt(document.getElementById("inputBookYear").value);
   const statusBaca = document.getElementById("inputBookIsComplete").checked;
-//   console.log({judulBuku, penulisBuku, tahunBuku, statusBaca});
 
   const book = makeBook(judulBuku, penulisBuku, tahunBuku, statusBaca);
   const bookObject = composeBookObject(judulBuku, penulisBuku, tahunBuku, statusBaca);

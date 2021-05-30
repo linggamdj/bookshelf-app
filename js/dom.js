@@ -11,76 +11,76 @@ function addBook() {
   const statusBaca = document.getElementById("inputBookIsComplete").checked;
 //   console.log({judulBuku, penulisBuku, tahunBuku, statusBaca});
 
-  const book = makeBook(judulBuku, penulisBuku, tahunBuku);
+  const book = makeBook(judulBuku, penulisBuku, tahunBuku, statusBaca);
 
-  if (statusBaca == false) {
-    uncompletedBookList.append(book);
-  } else {
+  if (statusBaca == true) {
     completedBookList.append(book);
+  } else {
+    uncompletedBookList.append(book);
   }
-  
 };
 
-function makeBook(dataJudul, dataPenulis, timestamp, isCompleted) {
+function makeBook(title, author, year, isCompleted) {
   const textJudul = document.createElement("h3");
-  textJudul.innerText = dataJudul;
+  textJudul.innerText = title;
 
   const textPenulis = document.createElement("p");
-  textPenulis.innerText = dataPenulis;
+  textPenulis.innerHTML = `Penulis: <span id="author">` + author + `</span>`;
 
   const textTahun = document.createElement("p");
-  textTahun.innerText = timestamp;
+  textTahun.innerHTML = `Tahun: <span id="year">` + year + `</span>`;
+
+  const div = document.createElement("div");
+  div.classList.add("action");
+
+  if (isCompleted) {
+    div.append(
+      createUndoButton(),
+      createDeleteButton()
+    );
+  } else {
+      div.append(
+        createCheckButton(),
+        createDeleteButton()
+    );
+  }
 
   const textContainer = document.createElement("article");
   textContainer.classList.add("book_item");
 
-  textContainer.append(textJudul, textPenulis, textTahun);
-
-  if (isCompleted) {
-    textContainer.append(createUndoButton(), createDeleteButton());
-  } else {
-    textContainer.append(createCheckButton(), createDeleteButton());
-  }
+  textContainer.append(textJudul, textPenulis, textTahun, div);
 
   return textContainer;
 };
 
 // function to make button tag
-function createButton(buttonTypeClass, eventListener) {
+function createButton(buttonTypeClass, buttonText, eventListener) {
   const button = document.createElement("button");
-
-  if (buttonTypeClass == "green") {
-    button.innerText = "Selesai Dibaca";
-  } else if (buttonTypeClass == "green-undo") {
-    button.innerText = "Belum Selesai Dibaca";
-  } else {
-    button.innerText = "Hapus Buku";
-  }
-  
   button.classList.add(buttonTypeClass);
+  button.innerText = buttonText;
   button.addEventListener("click", function(e) {
     eventListener(e);
+    e.stopPropagation();
   });
 
   return button;
 };
 
 function createCheckButton() {
-  return createButton("green", function(e) {
-    addBookToCompleted(e.target.parentElement);
+  return createButton("green", "Selesai Dibaca", function(e) {
+    addBookToCompleted(e.target.parentElement.parentElement);
   });
 };
 
-
 function createUndoButton() {
-  return createButton("green-undo", function(e) {
-    undoBookFromCompleted(e.target.parentElement);
+  return createButton("green-undo", "Belum Selesai Dibaca", function(e) {
+    undoBookFromCompleted(e.target.parentElement.parentElement);
   });
 };
 
 function createDeleteButton() {
-  return createButton("red", function(e) {
-    removeBookFromCompleted(e.target.parentElement);
+  return createButton("red", "Hapus Buku", function(e) {
+    removeBookFromCompleted(e.target.parentElement.parentElement);
     
   });
 };
@@ -88,9 +88,11 @@ function createDeleteButton() {
 function addBookToCompleted(taskElement) {
   const bookJudul = taskElement.querySelector("h3").innerText;
 
-  const p = taskElement.querySelectorAll("p");
-  const bookPenulis = p[0].innerText;
-  const bookTahun = p[1].innerText;
+//   const p = taskElement.querySelectorAll("p");
+//   const bookPenulis = p[0].innerText;
+//   const bookTahun = p[1].innerText;
+  const bookPenulis = taskElement.querySelector("span#author").innerText;
+  const bookTahun = taskElement.querySelector("span#year").innerText;
 
   const newBook = makeBook(bookJudul, bookPenulis, bookTahun, true);
   const listCompleted = document.getElementById(COMPLETED_BOOK_LIST_ID);
@@ -101,9 +103,11 @@ function addBookToCompleted(taskElement) {
 function undoBookFromCompleted(taskElement) {
   const bookJudul = taskElement.querySelector("h3").innerText;
 
-  const p = taskElement.querySelectorAll("p");
-  const bookPenulis = p[0].innerText;
-  const bookTahun = p[1].innerText;
+//   const p = taskElement.querySelectorAll("p");
+//   const bookPenulis = p[0].innerText;
+//   const bookTahun = p[1].innerText;
+  const bookPenulis = taskElement.querySelector("span#author").innerText;
+  const bookTahun = taskElement.querySelector("span#year").innerText;
 
   const newBook = makeBook(bookJudul, bookPenulis, bookTahun, false);
   const listUncompleted = document.getElementById(UNCOMPLETED_BOOK_LIST_ID);

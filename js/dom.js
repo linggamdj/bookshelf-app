@@ -53,7 +53,7 @@ function makeBook(title, author, year, isCompleted) {
   }
 
   const textContainer = document.createElement("article");
-  textContainer.classList.add("book_item");
+  textContainer.classList.add("book-item");
 
   textContainer.append(textJudul, textPenulis, textTahun, div);
 
@@ -74,19 +74,19 @@ function createButton(buttonTypeClass, buttonText, eventListener) {
 };
 
 function createCheckButton() {
-  return createButton("green", "Selesai Dibaca", function(e) {
+  return createButton("cyan", "Selesai Dibaca", function(e) {
     addBookToCompleted(e.target.parentElement.parentElement);
   });
 };
 
 function createUndoButton() {
-  return createButton("green-undo", "Belum Selesai Dibaca", function(e) {
+  return createButton("cyan-undo", "Belum Selesai Dibaca", function(e) {
     undoBookFromCompleted(e.target.parentElement.parentElement);
   });
 };
 
 function createDeleteButton() {
-  return createButton("red", "Hapus Buku", function(e) {
+  return createButton("dark", "Hapus Buku", function(e) {
     removeBookFromCompleted(e.target.parentElement.parentElement);
   });
 };
@@ -95,16 +95,13 @@ function addBookToCompleted(taskElement) {
   const listCompleted = document.getElementById(COMPLETED_BOOK_LIST_ID);
 
   const bookJudul = taskElement.querySelector("h3").innerText;
-//   const p = taskElement.querySelectorAll("p");
-//   const bookPenulis = p[0].innerText;
-//   const bookTahun = p[1].innerText;
   const bookPenulis = taskElement.querySelector("span#author").innerText;
   const bookTahun = taskElement.querySelector("span#year").innerText;
 
   const newBook = makeBook(bookJudul, bookPenulis, bookTahun, true);
 
   const book = findBook(taskElement[BOOK_ITEMID]);
-  book.isCompleted = true;
+  book.isComplete = true;
   newBook[BOOK_ITEMID] = book.id;
   
   listCompleted.append(newBook);
@@ -117,17 +114,13 @@ function undoBookFromCompleted(taskElement) {
   const listUncompleted = document.getElementById(UNCOMPLETED_BOOK_LIST_ID);
 
   const bookJudul = taskElement.querySelector("h3").innerText;
-
-//   const p = taskElement.querySelectorAll("p");
-//   const bookPenulis = p[0].innerText;
-//   const bookTahun = p[1].innerText;
   const bookPenulis = taskElement.querySelector("span#author").innerText;
   const bookTahun = taskElement.querySelector("span#year").innerText;
 
   const newBook = makeBook(bookJudul, bookPenulis, bookTahun, false);
 
   const book = findBook(taskElement[BOOK_ITEMID]);
-  book.isCompleted = false;  
+  book.isComplete = false;
   newBook[BOOK_ITEMID] = book.id;
 
   listUncompleted.append(newBook);
@@ -148,10 +141,7 @@ function removeBookFromCompleted(taskElement) {
 function searchBook(e) {
   const userInput = document.querySelector("#searchBookTitle");
   const filter = userInput.value.toUpperCase();
-//   const completedBooks = document.querySelector("#completeBookshelfList");
-//   const unCompletedBooks = document.querySelector("#incompleteBookshelfList");
-  const bookItems = document.querySelectorAll(".book_item");
-//   const bookAuthor = document.querySelector(".book_item > #author")
+  const bookItems = document.querySelectorAll(".book-item");
 
   for (let i = 0; i < bookItems.length; i++) {
     const book = bookItems[i].querySelector("#author");

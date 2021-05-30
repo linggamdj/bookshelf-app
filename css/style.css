@@ -12,13 +12,38 @@ input, button {
     font-size: 16px;
 }
 
-.head_bar {
+.header-logo {
     padding: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: cornflowerblue;
-    color: white;
+    padding-left: 25px;
+    background-color: #222831;
+    color: #00adb5;
+}
+
+nav {
+    float: right;
+    margin-top: -35px;
+}
+
+nav a {
+    color: #00adb5;
+    font-size: 18px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+nav a:hover {
+    color: #eeeeee;
+}
+
+nav ul {
+    margin-right: 0px;
+}
+
+
+nav li {
+    display: inline;
+    list-style-type:none;
+    margin-right: 20px;
 }
 
 main {
@@ -29,7 +54,7 @@ main {
 
 }
 
-.input_section {
+.input-section {
     display: flex;
     flex-direction: column;
     padding: 16px;
@@ -37,18 +62,18 @@ main {
     border-radius: 10px;
 }
 
-.input_section > h2 {
+.input-section > h2 {
     text-align: center;
-    color: cornflowerblue;
+    color: #222831;
 }
 
-.input_section > form > .input {
+.input-section > form > .input {
     margin: 8px 0;
 }
 
-.input_section > form > button {
-    background-color: cornflowerblue;
-    color: white;
+.input-section > form > button {
+    background-color: #222831;
+    color: #eeeeee;
     border: 0;
     border-radius: 5px;
     display: block;
@@ -57,11 +82,11 @@ main {
     cursor: pointer;
 }
 
-.input_section > form > button > span {
+.input-section > form > button > span {
     font-weight: bold;
 }
 
-.input_section > form > .input > input {
+.input-section > form > .input > input {
     display: block;
     width: 100%;
     padding: 8px;
@@ -70,24 +95,24 @@ main {
 
 
 
-.input_section > form > .input > label {
-    color: cornflowerblue;
+.input-section > form > .input > label {
+    color: #222831;
     font-weight: bold;
 }
 
-.input_section > form > .input_inline {
+.input-section > form > .input-inline {
     margin: 12px 0;
     display: flex;
     align-items: center;
 }
 
-.input_section > form > .input_inline > label {
-    color: cornflowerblue;
+.input-section > form > .input-inline > label {
+    color: #222831;
     font-weight: bold;
     margin-right: 10px;
 }
 
-.search_section {
+.search-section {
     margin: 16px 0;
     display: flex;
     flex-direction: column;
@@ -97,11 +122,11 @@ main {
     border-radius: 10px;
 }
 
-.search_section > h2 {
-    color: cornflowerblue;
+.search-section > h2 {
+    color: #222831;
 }
 
-.search_section > form {
+.search-section > form {
     padding: 16px;
     width: 100%;
     display: grid;
@@ -109,51 +134,51 @@ main {
     grid-gap: 10px;
 }
 
-.search_section > form > label {
+.search-section > form > label {
     display: flex;
     align-items: center;
 }
 
-.search_section > form > input {
+.search-section > form > input {
     padding: 5px;
     border-radius: 5px;
 }
 
-.search_section > form > button {
-    background-color: cornflowerblue;
+.search-section > form > button {
+    background-color: #222831;
     color: white;
     border: 0;
     border-radius: 5px;
     cursor: pointer;
 }
 
-.book_shelf {
+.book-shelf {
     margin: 16px 0 0 0;
     border: 1px solid black;
     padding: 16px;
     border-radius: 10px;
 }
 
-.book_shelf > h2 {
-    color: cornflowerblue;
+.book-shelf > h2 {
+    color: #00adb5;
 }
 
-.book_shelf > .book_list {
+.book-shelf > .book-list {
     padding: 16px;
 }
 
-.book_shelf > .book_list > .book_item {
+.book-shelf > .book-list > .book-item {
     padding: 8px 16px 16px 16px;
     border: 1px solid black;
     border-radius: 5px;
     margin: 10px 0;
 }
 
-.book_shelf > .book_list > .book_item > h3, p {
+.book-shelf > .book-list > .book-item > h3, p {
     margin: 8px 0;
 }
 
-.book_shelf > .book_list > .book_item > .action > button {
+.book-shelf > .book-list > .book-item > .action > button {
     border: 0;
     padding: 5px;
     margin: 0 5px 0 0;
@@ -161,17 +186,18 @@ main {
     cursor: pointer;
 }
 
-.book_shelf > .book_list > .book_item > .action > .green {
-    background-color: darkgreen;
+.book-shelf > .book-list > .book-item > .action > .cyan, .cyan-undo {
+    background-color: #00adb5;
     color: white;
 }
 
-.book_shelf > .book_list > .book_item > .action > .green-undo {
-    background-color: darkgreen;
+.book-shelf > .book-list > .book-item > .action > .dark {
+    background-color: #393e46;
     color: white;
 }
 
-.book_shelf > .book_list > .book_item > .action > .red {
-    background-color: darkred;
-    color: white;
+@media screen and (max-width: 850px) {
+    nav {
+        display: none;
+    }
 }

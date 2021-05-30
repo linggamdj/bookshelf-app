@@ -11,11 +11,19 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<header class="head_bar">
-    <h1 class="head_bar__title">Bookshelf Apps</h1>
+<header class="header-logo">
+    <h1>BOOKSHELF APPS</h1>
+    <nav>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">GitHub</a></li>
+            <li><a href="#">Social Media</a></li>
+        </ul>
+    </nav>
 </header>
 <main>
-    <section class="input_section">
+    <section class="input-section">
         <h2>Masukkan Buku Baru</h2>
         <form id="inputBook">
             <div class="input">
@@ -30,15 +38,15 @@
                 <label for="inputBookYear">Tahun</label>
                 <input id="inputBookYear" type="number" required>
             </div>
-            <div class="input_inline">
+            <div class="input-inline">
                 <label for="inputBookIsComplete">Selesai dibaca</label>
                 <input id="inputBookIsComplete" type="checkbox">
             </div>
-            <button id="bookSubmit" type="submit">Masukkan Buku ke rak</button>
+            <button id="bookSubmit" type="submit">Masukkan Buku ke Rak</button>
         </form>
     </section>
 
-    <section class="search_section">
+    <section class="search-section">
         <h2>Cari Buku</h2>
         <form id="searchBook">
             <label for="searchBookTitle">Judul</label>
@@ -47,20 +55,19 @@
         </form>
     </section>
 
-    <section class="book_shelf">
-        <h2>Belum selesai dibaca</h2>
-
-        <div id="incompleteBookshelfList" class="book_list">
+    <section class="book-shelf">
+        <h2>Belum Selesai Dibaca</h2>
+        <div id="incompleteBookshelfList" class="book-list">
         </div>
     </section>
 
-    <section class="book_shelf">
-        <h2>Selesai dibaca</h2>
-
-        <div id="completeBookshelfList" class="book_list">
+    <section class="book-shelf">
+        <h2>Selesai Dibaca</h2>
+        <div id="completeBookshelfList" class="book-list">
         </div>
     </section>
 </main>
+
 <script src="js/data.js"></script>
 <script src="js/dom.js"></script>
 <script src="js/main.js"></script>
